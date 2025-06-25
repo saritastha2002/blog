@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{post.title}}</h1>
+<small style="
+  display: inline-block;
+  margin-top: 5px;
+  color: #555;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+">
+  ✍️ Written by <span style="color: #007bff;">{{post.author.first_name}} {{post.author.last_name}}</span>
+</small>
+
+<br/>
+<hr>
+<br/>
+{{post.comment}}
+
+
+<br/><br/>
+<button type="button" class="btn btn-secondary" style="background-color: gray; color: white;">
+<a href="{% url "article_detail" post.pk %}" class="btn btn-secondary">Back</a></button>
+
+
+{% endblock content %}

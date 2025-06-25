@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Posts</h1>
+<ul class="list-group">
+    {% for post in posts %}
+    <div class="bg-success p-2 text-dark bg-opacity-50 mb-2">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <a href="{% url 'article_detail' post.pk %}"><strong>{{ post.title }}</strong></a><br/>
+            </div>
+            <div>
+                <a href="{% url 'update_post' post.pk %}" class="btn btn-sm btn-warning">Update</a>
+                <a href="{% url 'delete_post' post.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            </div>
+        </li>
+    </div>
+    {% empty %}
+        <li class="list-group-item">No posts available.</li>
+    {% endfor %}
+</ul>
+<p>Total Posts: {{ posts|length }}</p>
+{% endblock %}
